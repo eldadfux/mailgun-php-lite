@@ -1,5 +1,5 @@
 {
-  "name": "MailgunLight/MailgunLight",
+  "name": "eldadfux/mailgun-light",
   "description": "A light and minimalistic PHP client library for sending mails using Mailgun API.",
   "keywords": ["mailgun", "api", "simple", "light"],
   "homepage": "https://github.com/eldadfux/mailgun-php-light",
