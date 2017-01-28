@@ -1,7 +1,8 @@
 # Mailgun PHP light
 
-A light and minimalistic PHP client library for sending mails using Mailgun API.
-
+A light and minimalistic PHP client library for sending mails using Mailgun API with no external dependencies.
+This library was created to provide a very simple curl abstraction for sending mails using the Mailgun HTTP API.
+This is an alternative to those who need to just send simple mails and think the original PHP Client is to heavy for them and have a to much dependencies.
 
 ## Installation
 
