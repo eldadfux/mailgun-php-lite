@@ -28,9 +28,14 @@ $mailgun
     ->setHTML('<b>I am a string</b>')
 ;
 
+// Send Mail
 if(!$mailgun->send()) {
     throw new Exception('Problem sending mail: ' . $mailgun->getError());
 }
+
+// Subscribe to newsletter
+$mailgun->subscribe('newsletter@example.com', 'user1@example.com')
+
 ```
 
 ## Contributing
