@@ -34,7 +34,7 @@ if(!$mailgun->send()) {
 }
 
 // Subscribe to newsletter
-$mailgun->subscribe('newsletter@example.com', 'user1@example.com')
+$mailgun->subscribe('newsletter@example.com', 'user1@example.com');
 
 ```
 
