@@ -20,6 +20,7 @@ $mailgun = new \MailgunLight\MailgunLight($apiKey, $apiDomain);
 
 $mailgun
     ->setFrom('team@example.com', 'Team Example')
+    ->setReplyTo('this@gmail.com') // optional
     ->addRecipient('user1@example.com', 'User 1 Name')
     ->addRecipient('user2@example.com', 'User 2 Name')
     ->addRecipient('user3@example.com', 'User 3 Name')
