@@ -2,8 +2,6 @@
 
 namespace MailgunLight;
 
-use Exception;
-
 class MailgunLight
 {
     const MAILGUN_API_MESSAGES  = 'https://api.mailgun.net/v3/%s/messages';
@@ -76,7 +74,6 @@ class MailgunLight
      * @param string $email
      * @param string $name
      * @return self
-     * @throws Exception
      */
     public function setFrom(string $email, string $name):self
     {
@@ -88,13 +85,11 @@ class MailgunLight
      * Set who to reply to
      *
      * @param string $email
-     * @param string $name
      * @return self
-     * @throws Exception
      */
-    public function setReplyTo(string $email, string $name):self
+    public function setReplyTo(string $email):self
     {
-        $this->replyTo = $name . ' <' . $email . '>';
+        $this->replyTo = $email;
         return $this;
     }
 
@@ -208,28 +203,24 @@ class MailgunLight
     {
         $ch = curl_init();
 
+        $params = [
+            'from' => $this->from,
+            'to' => implode(',', $this->recipients),
+            'subject' => $this->subject,
+            'text' => $this->text,
+            'html' => $this->html,
+        ];
+
+        if((!empty($this->replyTo))) {
+            $params['h:Reply-To'] = $this->replyTo;
+        }
+
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
         curl_setopt($ch, CURLOPT_USERPWD, 'api:' . $this->apiKey);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_URL, sprintf(self::MAILGUN_API_MESSAGES, $this->apiDomain));
-
-        if(!empty($this->replyTo)) {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-                'h:reply-to: ' . $this->replyTo,
-            ));
-        }
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS,
-            array(
-                'from' => $this->from,
-                'to' => implode(',', $this->recipients),
-                'subject' => $this->subject,
-                'text' => $this->text,
-                'html' => $this->html
-            )
-        );
-
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_VERBOSE, 1);
         curl_setopt($ch, CURLOPT_HEADER, 1);
