@@ -148,11 +148,10 @@ class MailgunLight
      * @param string $list
      * @param string $address
      * @param string $name
-     * @param string $description
      * @param array $vars
      * @return string
      */
-    public function subscribe(string $list, string $address, string $name = '', string $description = '', array $vars = []):string
+    public function subscribe(string $list, string $address, string $name = '', array $vars = []):string
     {
         $ch = curl_init();
 
@@ -165,6 +164,8 @@ class MailgunLight
             array(
                 'subscribed' => 'True',
                 'address' => $address,
+                'name' => $name,
+                'vars' => json_encode($vars),
             )
         );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
