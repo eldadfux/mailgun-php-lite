@@ -28,6 +28,11 @@ class MailgunLight
     protected $replyTo = '';
 
     /**
+     * @var string
+     */
+    protected $schedule = null;
+
+    /**
      * @var array
      */
     protected $recipients = array();
@@ -90,6 +95,21 @@ class MailgunLight
     public function setReplyTo(string $email):self
     {
         $this->replyTo = $email;
+        return $this;
+    }
+
+    /**
+     * Set time to send message
+     *
+     * As described here:
+     * https://www.mailgun.com/blog/tips-tricks-scheduling-email-delivery
+     *
+     * @param int $unixTime
+     * @return self
+     */
+    public function setSchedule(int $unixTime):self
+    {
+        $this->schedule = $unixTime;
         return $this;
     }
 
@@ -214,6 +234,10 @@ class MailgunLight
 
         if((!empty($this->replyTo))) {
             $params['h:Reply-To'] = $this->replyTo;
+        }
+
+        if((!empty($this->schedule))) {
+            $params['o:deliverytime'] = date('D, d M Y H:i:s O', $this->schedule); // When scheduling delivery, dates need to be strings encoded according to RFC 2822
         }
 
         curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
