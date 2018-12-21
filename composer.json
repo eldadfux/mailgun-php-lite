@@ -1,11 +1,11 @@
 {
-  "name": "eldadfux/mailgun-light",
+  "name": "eldadfux/mailgun-lite",
   "description": "A lite and minimalistic PHP client library for sending mails using Mailgun API.",
-  "keywords": ["mailgun", "api", "simple", "lite", "light"],
-  "homepage": "https://github.com/eldadfux/mailgun-php-light",
+  "keywords": ["mailgun", "api", "simple", "lite"],
+  "homepage": "https://github.com/eldadfux/mailgun-php-lite",
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/eldadfux/mailgun-php-light/issues"
+    "issues": "https://github.com/eldadfux/mailgun-php-lite/issues"
   },
   "type": "project",
   "authors": [
@@ -16,7 +16,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "MailgunLight\\": "src/MailgunLight"
+      "MailgunLite\\": "src/MailgunLite"
     }
   },
   "require": {

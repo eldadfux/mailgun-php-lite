@@ -1,8 +1,8 @@
 <?php
 
-namespace MailgunLight;
+namespace MailgunLite;
 
-class MailgunLight
+class MailgunLite
 {
     const MAILGUN_API_MESSAGES  = 'https://api.mailgun.net/v3/%s/messages';
     const MAILGUN_API_SUBSCRIBE = 'https://api.mailgun.net/v3/lists/%s/members';

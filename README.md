@@ -1,13 +1,13 @@
-# Mailgun PHP Light
+# Mailgun PHP Lite
 
-Mailgun PHP Light is a lite and minimalistic PHP client library for sending mails using Mailgun API with no external dependencies.
+Mailgun PHP Lite is a lite and minimalistic PHP client library for sending mails using Mailgun API with no external dependencies.
 This library was created to provide a very simple curl abstraction for sending mails using the Mailgun HTTP API.
 This is an alternative to those who need to just send simple mails and think the original PHP Client is to heavy for them and have a to much dependencies.
 
 ## Installation
 
 ```bash
-composer require 'eldadfux/mailgun-light:1.2.*'
+composer require 'eldadfux/mailgun-lite:1.2.*'
 ```
 
 ## Example
@@ -16,7 +16,7 @@ composer require 'eldadfux/mailgun-light:1.2.*'
 $apiKey    = 'your-api-key-here';
 $apiDomain = 'your-api-sending-domain-here';
 
-$mailgun = new \MailgunLight\MailgunLight($apiKey, $apiDomain);
+$mailgun = new \MailgunLite\MailgunLite($apiKey, $apiDomain);
 
 $mailgun
     ->setFrom('team@example.com', 'Team Example')
