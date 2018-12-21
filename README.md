@@ -7,7 +7,7 @@ This is an alternative to those who need to just send simple mails and think the
 ## Installation
 
 ```bash
-composer require 'eldadfux/mailgun-light:1.0.1'
+composer require 'eldadfux/mailgun-light:1.1.*'
 ```
 
 ## Example
