@@ -35,7 +35,7 @@ class MailgunLite
     /**
      * @var array
      */
-    protected $recipients = array();
+    protected $recipients = [];
 
     /**
      * @var string
@@ -270,5 +270,21 @@ class MailgunLite
         }
 
         return $return;
+    }
+
+    /**
+     * Reset Email Fields
+     */
+    public function reset()
+    {
+        $this->from = '';
+        $this->replyTo = '';
+        $this->schedule = null;
+        $this->recipients = [];
+        $this->subject = '';
+        $this->text = '';
+        $this->html = '';
+        $this->message = '';
+        $this->error = '';
     }
 }
