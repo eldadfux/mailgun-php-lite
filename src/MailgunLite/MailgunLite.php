@@ -169,9 +169,10 @@ class MailgunLite
      * @param string $address
      * @param string $name
      * @param array $vars
-     * @return string
+     * @param bool $upsert
+     * @return bool
      */
-    public function subscribe(string $list, string $address, string $name = '', array $vars = []):string
+    public function subscribe(string $list, string $address, string $name = '', array $vars = [], bool $upsert = false):bool
     {
         $ch = curl_init();
 
@@ -186,6 +187,7 @@ class MailgunLite
                 'address' => $address,
                 'name' => $name,
                 'vars' => json_encode($vars),
+                'upsert' => $upsert ? 'yes' : 'no',
             )
         );
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
